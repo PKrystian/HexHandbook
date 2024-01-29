@@ -1,0 +1,43 @@
+name: React Native CI/CD
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '14'
+
+    - name: Install dependencies
+      run: npm install
+
+    - name: Run linting
+      run: npm run lint
+
+    - name: Run unit tests
+      run: npm test
+
+    - name: Build and test Android
+      run: npx react-native run-android --no-clean
+
+    - name: Build and test iOS
+      run: npx react-native run-ios --no-clean
+
+    - name: Build and test Web
+      run: npx react-native run-web --no-clean
+
+    - name: Check code structure and readability
+      run: npm run lint
+
+    - name: React Project Checker
+      uses: VictorDanilov/react-project-checker-action@v0.0.1-alpha
