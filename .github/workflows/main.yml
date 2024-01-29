@@ -25,7 +25,19 @@ jobs:
       run: npm test || true
 
     - name: Build and test Android
-      run: npx react-native run-android
+      run: |
+        # Start an Android emulator in headless mode
+        echo "no" | android create avd --force -n test -t android-30 --abi armeabi-v7a
+        emulator -avd test -no-window -no-audio -no-skin -no-boot-anim &
+
+        # Wait for emulator to start
+        android-wait-for-emulator
+
+        # Unlock the emulator screen
+        adb shell input keyevent 82 &
+
+        # Run React Native app on the emulator
+        npx react-native run-android
 
     - name: Build and test iOS
       run: npx react-native run-ios
