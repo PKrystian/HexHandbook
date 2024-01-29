@@ -12,8 +12,6 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
-      with:
-        submodules: 'recursive'
 
     - name: Set up Node.js
       uses: actions/setup-node@v4
@@ -23,8 +21,11 @@ jobs:
     - name: Install dependencies
       run: npm install
 
+    - name: Install ESLint
+      run: npm install eslint --save-dev
+
     - name: Run linting
-      run: npm run lint
+      run: npx eslint src
 
     - name: Run unit tests
       run: npm test
