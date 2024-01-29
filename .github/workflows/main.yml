@@ -19,7 +19,7 @@ jobs:
         node-version: '20'
 
     - name: Install dependencies
-      run: npm install
+      run: npm install --prefix dist
 
     - name: Run unit tests
       run: echo "TODO add unit tests"
