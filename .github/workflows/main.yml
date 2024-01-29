@@ -21,23 +21,33 @@ jobs:
     - name: Install dependencies
       run: npm install
 
-    - name: Run unit tests
-      run: npm test || true
-
-    - name: Build and test Android
+    - name: Install Android SDK
       run: |
-        # Start an Android emulator in headless mode
-        echo "no" | android create avd --force -n test -t android-30 --abi armeabi-v7a
+        sudo apt-get update -y
+        sudo apt-get install -y openjdk-8-jdk
+        export ANDROID_HOME=$HOME/android-sdk
+        export PATH=$PATH:$ANDROID_HOME/emulator
+        export PATH=$PATH:$ANDROID_HOME/tools
+        export PATH=$PATH:$ANDROID_HOME/tools/bin
+        export PATH=$PATH:$ANDROID_HOME/platform-tools
+        wget https://dl.google.com/android/repository/sdk-tools-linux-4333796.zip
+        unzip sdk-tools-linux-4333796.zip -d $ANDROID_HOME
+        yes | $ANDROID_HOME/tools/bin/sdkmanager --licenses
+        $ANDROID_HOME/tools/bin/sdkmanager "build-tools;30.0.3" "platforms;android-30" "system-images;android-30;google_apis;armeabi-v7a"
+
+    - name: Start Android emulator
+      run: |
+        echo "no" | avdmanager create avd -n test -k "system-images;android-30;google_apis;armeabi-v7a"
         emulator -avd test -no-window -no-audio -no-skin -no-boot-anim &
 
-        # Wait for emulator to start
-        android-wait-for-emulator
+    - name: Wait for emulator to start
+      run: android-wait-for-emulator
 
-        # Unlock the emulator screen
-        adb shell input keyevent 82 &
+    - name: Unlock the emulator screen
+      run: adb shell input keyevent 82
 
-        # Run React Native app on the emulator
-        npx react-native run-android
+    - name: Build and test Android
+      run: npx react-native run-android
 
     - name: Build and test iOS
       run: npx react-native run-ios
