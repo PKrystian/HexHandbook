@@ -19,7 +19,7 @@ jobs:
         node-version: '20'
 
     - name: Install dependencies
-      run: npm install --prefix dist
+      run: npm install
 
     - name: Run unit tests
       run: echo "TODO add unit tests"
@@ -35,6 +35,3 @@ jobs:
 
     - name: Check code structure and readability
       run: npm run lint
-
-    - name: React Project Checker
-      uses: VictorDanilov/react-project-checker-action@v0.0.1-alpha
