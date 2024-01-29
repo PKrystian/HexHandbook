@@ -13,18 +13,19 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
 
-    - name: Set up Node.js
+    - name: Set up Node.js and Java 8
       uses: actions/setup-node@v4
       with:
         node-version: '20'
+    - run: sudo apt-get install -y openjdk-8-jdk
+    - run: sudo update-alternatives --set java /usr/lib/jvm/java-8-openjdk-amd64/jre/bin/java
+    - run: java -version
 
     - name: Install dependencies
       run: npm install
 
     - name: Install Android SDK
       run: |
-        sudo apt-get update -y
-        sudo apt-get install -y openjdk-8-jdk
         export ANDROID_HOME=$HOME/android-sdk
         export PATH=$PATH:$ANDROID_HOME/emulator
         export PATH=$PATH:$ANDROID_HOME/tools
