@@ -1,9 +1,9 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet } from 'react-native'
 
-const BACKGROUND_COLOR = '#222831';
-const BACKGROUND_COLOR_ODD = '#393E46';
-const TEXT_COLOR = '#EEEEEE';
-const BORDER_COLOR = '#393E46';
+const BACKGROUND_COLOR = '#222831'
+const BACKGROUND_COLOR_ODD = '#393E46'
+const TEXT_COLOR = '#EEEEEE'
+const BORDER_COLOR = '#393E46'
 
 export const tableStyles = StyleSheet.create({
   scrollView: { backgroundColor: BACKGROUND_COLOR },
@@ -13,5 +13,5 @@ export const tableStyles = StyleSheet.create({
   text: { margin: 6, color: TEXT_COLOR, textAlign: 'center' },
   row: { flexDirection: 'row', backgroundColor: BACKGROUND_COLOR },
   evenRow: { backgroundColor: BACKGROUND_COLOR },
-  oddRow: { backgroundColor: BACKGROUND_COLOR_ODD },
-});
+  oddRow: { backgroundColor: BACKGROUND_COLOR_ODD }
+})
