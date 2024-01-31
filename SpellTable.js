@@ -1,15 +1,15 @@
-import React, { useState, useEffect } from 'react';
-import { View, ScrollView } from 'react-native';
-import { Table, Row } from 'react-native-table-component';
-import { tableStyles } from './styles/Table';
+import React, { useState, useEffect } from 'react'
+import { View, ScrollView } from 'react-native'
+import { Table, Row } from 'react-native-table-component'
+import { tableStyles } from './styles/Table'
 
 const SpellTable = () => {
-  const [tableData, setTableData] = useState([]);
+  const [tableData, setTableData] = useState([])
 
   useEffect(() => {
-    const jsonData = require('./spells.json');
-    setTableData(jsonData);
-  }, []);
+    const jsonData = require('./spells.json')
+    setTableData(jsonData)
+  }, [])
 
   const tableHead = [
     'ID',
@@ -24,8 +24,8 @@ const SpellTable = () => {
     'Components',
     'Description',
     'Tags',
-    'Type',
-  ];
+    'Type'
+  ]
 
   return (
     <ScrollView vertical={true} showsVerticalScrollIndicator={false} style={tableStyles.scrollView}>
@@ -35,7 +35,7 @@ const SpellTable = () => {
           {tableData.map((rowData, index) => {
             const descriptionWithHigherLevels = rowData.higher_levels
               ? `${rowData.description}\n\nHigher Levels: ${rowData.higher_levels}`
-              : rowData.description;
+              : rowData.description
 
             return (
               <Row
@@ -53,17 +53,17 @@ const SpellTable = () => {
                   `${rowData.components.raw} ${rowData.components.materials_needed ? `(${rowData.components.materials_needed.join(', ')})` : ''}`,
                   descriptionWithHigherLevels,
                   rowData.tags.join(', '),
-                  rowData.type,
+                  rowData.type
                 ]}
                 textStyle={tableStyles.text}
                 style={[tableStyles.row, index % 2 === 0 ? tableStyles.evenRow : tableStyles.oddRow]}
               />
-            );
+            )
           })}
         </Table>
       </View>
     </ScrollView>
-  );
-};
+  )
+}
 
-export default SpellTable;
+export default SpellTable
