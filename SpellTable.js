@@ -20,7 +20,7 @@ const SpellTable = () => {
   return (
     <ScrollView vertical={true} showsVerticalScrollIndicator={false} style={tableStyles.scrollView}>
       <View style={tableStyles.container}>
-        <Table borderStyle={{ borderWidth: 1, borderColor: '#393E46' }}>
+        <Table borderStyle={{ borderWidth: 1, borderColor: '#222831' }}>
           <Row data={tableHead} style={tableStyles.head} textStyle={tableStyles.headText} />
           {tableData.map((rowData, index) => {
             return (
