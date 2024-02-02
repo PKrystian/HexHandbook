@@ -1,11 +1,11 @@
 import React from 'react'
 import { SafeAreaView } from 'react-native'
-import SpellTable from './SpellTable'
+import SpellList from './SpellList'
 
 const App = () => {
   return (
-    <SafeAreaView style={{ flex: 1 }}>
-      <SpellTable />
+    <SafeAreaView style={{ flex: 1, backgroundColor: '#393E46' }}>
+      <SpellList />
     </SafeAreaView>
   )
 }
