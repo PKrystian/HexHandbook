@@ -1,5 +1,19 @@
 import React, { useState, useEffect } from 'react'
-import { View, ScrollView, TouchableOpacity, Text } from 'react-native'
+import PropTypes from 'prop-types'
+import { View, ScrollView, TouchableOpacity, Text as RNText, StyleSheet } from 'react-native'
+
+const styles = StyleSheet.create({
+  whiteColor: {
+    color: '#fff'
+  }
+})
+
+const WhiteText = (props) => <RNText style={[styles.whiteColor, props.style]}>{props.children}</RNText>
+
+WhiteText.propTypes = {
+  style: PropTypes.object,
+  children: PropTypes.node
+}
 
 const SpellList = () => {
   const [spells, setSpells] = useState([])
@@ -18,28 +32,28 @@ const SpellList = () => {
   if (selectedSpell) {
     return (
       <View style={{ padding: 10, margin: 10, backgroundColor: '#222831' }}>
-        <Text style={{ color: '#fff' }}>Name: {selectedSpell.name}</Text>
-        <Text style={{ color: '#fff' }}>Level: {selectedSpell.level}</Text>
-        <Text style={{ color: '#fff' }}>School: {selectedSpell.school}</Text>
-        <Text style={{ color: '#fff' }}>Casting Time: {selectedSpell.casting_time}</Text>
-        <Text style={{ color: '#fff' }}>Ritual: {selectedSpell.ritual ? 'Yes' : 'No'}</Text>
-        <Text style={{ color: '#fff' }}>Range: {selectedSpell.range}</Text>
-        <Text style={{ color: '#fff' }}>Duration: {selectedSpell.duration}</Text>
-        <Text style={{ color: '#fff' }}>Components: {selectedSpell.components.raw}</Text>
-        <Text style={{ color: '#fff' }}>Description: {selectedSpell.description}</Text>
+        <WhiteText>Name: {selectedSpell.name}</WhiteText>
+        <WhiteText>Level: {selectedSpell.level}</WhiteText>
+        <WhiteText>School: {selectedSpell.school}</WhiteText>
+        <WhiteText>Casting Time: {selectedSpell.casting_time}</WhiteText>
+        <WhiteText>Ritual: {selectedSpell.ritual ? 'Yes' : 'No'}</WhiteText>
+        <WhiteText>Range: {selectedSpell.range}</WhiteText>
+        <WhiteText>Duration: {selectedSpell.duration}</WhiteText>
+        <WhiteText>Components: {selectedSpell.components.raw}</WhiteText>
+        <WhiteText>Description: {selectedSpell.description}</WhiteText>
         {
           selectedSpell.higher_level
-            ? <Text style={{ color: '#fff' }}>Higher Level: {selectedSpell.higher_level}</Text>
+            ? <WhiteText>Higher Level: {selectedSpell.higher_level}</WhiteText>
             : null
         }
-        <Text style={{ color: '#fff' }}>Classes: {selectedSpell.classes.join(', ')}</Text>
-        <Text style={{ color: '#fff' }}>Tags: {selectedSpell.tags.join(', ')}</Text>
-        <Text style={{ color: '#fff' }}>Type: {selectedSpell.type}</Text>
+        <WhiteText>Classes: {selectedSpell.classes.join(', ')}</WhiteText>
+        <WhiteText>Tags: {selectedSpell.tags.join(', ')}</WhiteText>
+        <WhiteText>Type: {selectedSpell.type}</WhiteText>
         <TouchableOpacity
           style={{ padding: 10, margin: 10, backgroundColor: '#ddd' }}
           onPress={() => setSelectedSpell(null)}
         >
-          <Text style={{ color: '#222831' }}>Back to list</Text>
+          <WhiteText style={{ color: '#222831' }}>Back to list</WhiteText>
         </TouchableOpacity>
       </View>
     )
@@ -55,9 +69,9 @@ const SpellList = () => {
               style={{ padding: 10, margin: 10, backgroundColor: '#222831' }}
               onPress={() => setSelectedSpell(spell)}
             >
-              <Text style={{ color: '#fff' }}>{spell.name}</Text>
-              <Text style={{ color: '#fff' }}>Level: {spell.level}</Text>
-              <Text style={{ color: '#fff' }}>School: {spell.school}</Text>
+              <WhiteText>{spell.name}</WhiteText>
+              <WhiteText>Level: {spell.level}</WhiteText>
+              <WhiteText>School: {spell.school}</WhiteText>
             </TouchableOpacity>
           )
         })}
