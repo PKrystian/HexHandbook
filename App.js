@@ -1,16 +1,24 @@
-import React from 'react'
-import { SafeAreaView } from 'react-native'
-import { GestureHandlerRootView } from 'react-native-gesture-handler'
-import SpellList from './SpellList'
+import React from 'react';
+import { View, StyleSheet } from 'react-native';
+import TopContent from './components/top/TopContent';
+import MainContent from './components/main/MainContent';
+import BottomContent from './components/bottom/BottomContent';
 
 const App = () => {
   return (
-    <GestureHandlerRootView style={{ flex: 1 }}>
-      <SafeAreaView style={{ flex: 1, backgroundColor: '#393E46' }}>
-        <SpellList />
-      </SafeAreaView>
-    </GestureHandlerRootView>
-  )
-}
+    <View style={styles.container}>
+      <TopContent />
+      <MainContent />
+      <BottomContent />
+    </View>
+  );
+};
 
-export default App
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'space-between',
+  },
+});
+
+export default App;
