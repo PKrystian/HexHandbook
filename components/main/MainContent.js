@@ -1,12 +1,19 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
 
-const MainContent = () => {
+const MainContent = ({ textStyle }) => {
   return (
-    <View>
-      <Text>Main Content</Text>
+    <View style={styles.content}>
+      <Text style={textStyle}>Main Content</Text>
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  content: {
+    flex: 1,
+    backgroundColor: '#00171F',
+  },
+});
 
 export default MainContent;
