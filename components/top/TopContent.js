@@ -1,13 +1,19 @@
-// src/components/TopNavBar.js
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
 
-const TopContent = () => {
+const TopContent = ({ textStyle }) => {
   return (
-    <View>
-      <Text>Top Navigation Bar</Text>
+    <View style={styles.content}>
+      <Text style={textStyle}>Top Navigation Bar</Text>
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  content: {
+    flex: 1,
+    backgroundColor: '#00171F',
+  },
+});
 
 export default TopContent;

@@ -1,12 +1,19 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
 
-const BottomContent = () => {
+const BottomContent = ({ textStyle }) => {
   return (
-    <View>
-      <Text>Bottom Navigation Bar</Text>
+    <View style={styles.content}>
+      <Text style={textStyle}>Bottom Navigation Bar</Text>
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  content: {    
+    flex: 1,
+    backgroundColor: '#00171F',
+  },
+});
 
 export default BottomContent;

@@ -1,23 +1,41 @@
 import React from 'react';
-import { View, StyleSheet } from 'react-native';
+import { View, StyleSheet, Dimensions } from 'react-native';
 import TopContent from './components/top/TopContent';
 import MainContent from './components/main/MainContent';
 import BottomContent from './components/bottom/BottomContent';
 
 const App = () => {
   return (
-    <View style={styles.container}>
-      <TopContent />
-      <MainContent />
-      <BottomContent />
+    <View style={styles.content}>
+      <View style={styles.top}>
+        <TopContent textStyle={styles.text} />
+      </View>
+      <View style={styles.main}>
+        <MainContent textStyle={styles.text} />
+      </View>
+      <View style={styles.bottom}>
+        <BottomContent textStyle={styles.text} />
+      </View>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
+  content: {
     flex: 1,
-    justifyContent: 'space-between',
+  },
+  top: {
+    height: Dimensions.get('window').height * 0.1,
+  },
+  main: {
+    height: Dimensions.get('window').height * 0.8,
+  },
+  bottom: {
+    height: Dimensions.get('window').height * 0.1,
+  },
+  text: {
+    color: '#FFFFFF',
+    textAlign: 'center',
   },
 });
 
