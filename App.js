@@ -25,13 +25,13 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   top: {
-    height: Dimensions.get('window').height * 0.1,
+    flex: 0.1,
   },
   main: {
-    height: Dimensions.get('window').height * 0.8,
+    flex: 0.8,
   },
   bottom: {
-    height: Dimensions.get('window').height * 0.1,
+    flex: 0.1,
   },
   text: {
     color: '#FFFFFF',
